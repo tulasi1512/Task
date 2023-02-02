@@ -1,0 +1,21 @@
+---
+- hosts: dev
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: install git
+      command: yum install git -y
+    - name: install httpd
+      action: yum name=httpd state=present
+      notify: restart httpd
+
+    - name: copy index.html
+      copy: 
+         src: "/home/ansible/myrepo/index.html"
+         dest: "/var/www/html/index.html"
+
+  handlers:
+    - name: restart httpd
+      service: name=httpd state=restarted
