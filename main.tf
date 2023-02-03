@@ -1,7 +1,7 @@
 provider "aws" {
 region = "ap-south-1"
-access_key = "AKIAYYNC2QLYVXI7VHKR"
-secret_key ="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"
+access_key = ""
+secret_key =""
 }
 locals {
 ingress_rules = [{
